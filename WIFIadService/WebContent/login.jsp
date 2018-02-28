@@ -17,8 +17,7 @@
 <form action="<%=basePath%>login" method="post">
 username:<input type="text" name="username"><br><br>
 password:<input type="password" name="password"><br><br>
-管理员:<input type="radio" value="admin" name="role">
-用户:<input type="radio" value="user" name="role"><br><br>
+
 <input type="submit" value="登录">
 </form>
 </body>
