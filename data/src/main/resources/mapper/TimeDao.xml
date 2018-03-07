@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zytx.dao.TimeDao">
+	<!-- 目的：为dao接口方法提供sql语句配置 -->
+	<select id="getRunnTimeByHour" resultType="java.lang.Long">
+		<!-- 获取一个小时的总运行时间 -->
+		SELECT
+			MAX(runDuration)-MIN(runDuration)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime}
+		and DATEPART(HOUR,recordTime) = #{hour} 
+		and registNumber = #{registNumber}
+		and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getRunnNumbersByHour" resultType="java.lang.Integer">
+		<!-- 获取一个小时的总运行次数-->
+		SELECT
+			MAX(runNumber)-MIN(runNumber)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime}
+		and DATEPART(HOUR,recordTime) = #{hour} 
+		and registNumber = #{registNumber}
+		and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getAbnormalNumbersByHour" resultType="java.lang.Integer">
+		<!-- 获取一个小时的总异常次数-->
+		SELECT
+			MAX(abnormalNumber)-MIN(abnormalNumber)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime}
+		and DATEPART(HOUR,recordTime) = #{hour} 
+		and registNumber = #{registNumber}
+		and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getRunTimeByDay" resultType="java.lang.Long">
+		<!-- 获得每天的总共运行时间 -->
+		SELECT
+			MAX(runDuration)-MIN(runDuration)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime 
+			between #{startTime} and #{endTime}
+			and DATEPART(DAY,recordTime) = #{day} 
+			and registNumber = #{registNumber}
+			and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getRunNumbersByDay" resultType="java.lang.Integer">
+		<!-- 获得每天的总共运行次数-->
+		SELECT
+			MAX(runNumber)-MIN(runNumber)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime 
+			between #{startTime} and #{endTime}
+			and DATEPART(DAY,recordTime) = #{day} 
+			and registNumber = #{registNumber}
+			and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getabnormalNumbersByDay" resultType="java.lang.Integer">
+		<!-- 获得每天的异常次数-->
+		SELECT
+			MAX(abnormalNumber)-MIN(abnormalNumber)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime 
+			between #{startTime} and #{endTime}
+			and DATEPART(DAY,recordTime) = #{day} 
+			and registNumber = #{registNumber}
+			and deviceid = #{deviceID}
+	</select>
+		
+	<select id="getTotalRunTime" resultType="java.lang.Long">
+		<!-- 获得startTime~endTime的总共运行时间 -->
+		SELECT
+			MAX(runDuration)-MIN(runDuration)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime} 
+			and registNumber = #{registNumber}
+			and deviceid = #{deviceID}
+	</select>
+	
+	
+	<select id="getRunnTimeByMonth" resultType="java.lang.Long">
+		<!-- 获取一个月的总运行时间 -->
+		SELECT
+			MAX(runDuration)-MIN(runDuration)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime}
+		and DATEPART(MONTH,recordTime) = #{month} 
+		and registNumber = #{registNumber}
+		and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getRunnNumberesByMonth" resultType="java.lang.Integer">
+		<!-- 获取一个小时的总运行次数-->
+		SELECT
+			MAX(runNumber)-MIN(runNumber)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime}
+		and DATEPART(MONTH,recordTime) = #{month} 
+		and registNumber = #{registNumber}
+		and deviceid = #{deviceID}
+	</select>
+	
+	<select id="getabnormalNumbersByMonth" resultType="java.lang.Integer">
+		<!-- 获取一个小时的总异常次数-->
+		SELECT
+			MAX(abnormalNumber)-MIN(abnormalNumber)
+		FROM
+			TwoCodeStatistics
+		WHERE
+			recordTime between #{startTime} and #{endTime}
+		and DATEPART(MONTH,recordTime) = #{month} 
+		and registNumber = #{registNumber}
+		and deviceid = #{deviceID}
+	</select>
+</mapper>

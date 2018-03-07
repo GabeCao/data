@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zytx.dao.TwoCodeElevatorInfoDao">
+
+	<!-- 目的：根据RigstNumber 获得一个TwoCodeElevatorInfo-->
+	<select id="getTwoCodeElevatorInfoByRegistNumber" resultType="com.zytx.entity.TwoCodeElevatorInfo" 
+		parameterType="java.lang.String">
+		<!-- 获取一个小时的总运行时间 -->
+		SELECT
+			address,buildingName
+		FROM
+			TwoCodeElevatorInfo
+		WHERE
+			registNumber = #{registNumber}
+	</select>
+	
+	
+</mapper>

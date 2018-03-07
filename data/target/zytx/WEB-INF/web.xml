@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>classpath:applicationContext.xml</param-value>
+ 	</context-param>
+ 	<listener>
+   		<listener-class>
+      		org.springframework.web.context.ContextLoaderListener
+    	</listener-class>
+  	</listener>
+  
+  
+	<!-- 配置DispatcherServlet -->
+	<servlet>
+		<servlet-name>seckill-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 配置springMVC需要加载的配置文件
+			spring-dao.xml,spring-service.xml,spring-web.xml
+			Mybatis - > spring -> springmvc
+		 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/spring-web.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>seckill-dispatcher</servlet-name>
+		<!-- 默认匹配所有的请求 -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+  
+  	<error-page>
+  		<exception-type>java.lang.Exception</exception-type>   
+        <location>/WEB-INF/jsp/error.jsp</location>   
+  	</error-page>
+</web-app>
