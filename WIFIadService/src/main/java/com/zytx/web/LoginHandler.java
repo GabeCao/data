@@ -17,18 +17,18 @@ public class LoginHandler {
 	@RequestMapping(method=RequestMethod.POST,value="/login")
 	public String login(@RequestParam("username") String username,@RequestParam("password") String password,
 						Model model) {
-//		Subject subject = SecurityUtils.getSubject();
-//		if (!subject.isAuthenticated()) {
-//			UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
-//			try {
-//				subject.login(usernamePasswordToken);
-//				User user = (User) subject.getPrincipal();
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				return "redirect:login.jsp";
-//			}
-//			
-//		}
+		Subject subject = SecurityUtils.getSubject();
+		if (!subject.isAuthenticated()) {
+			UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
+			try {
+				subject.login(usernamePasswordToken);
+				User user = (User) subject.getPrincipal();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "redirect:login.jsp";
+			}
+			
+		}
 		return "admin";
 	}
 }
